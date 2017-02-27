@@ -1,6 +1,6 @@
 const roles = [
   // TEMPLATE ROLES
-  'template-admin',
+  'template-administrator',
   'template-contentprovider',
   'template-label',
   'template-editor',

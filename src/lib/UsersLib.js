@@ -6,7 +6,7 @@ import mapAdminRoles from '../roles/MappedRoles';
 
 const getUsers = async () => {
   try {
-    const users = await UsersData.getUsers();
+    const users = await UsersData.getMappedUsers();
     return users.reduce((accumulator, current) => {
       const currentUser = accumulator.find(a => a.vevousername === current.vevousername);
 
@@ -50,9 +50,9 @@ const processUser = async adminUser => {
     log.info(oldRoles);
 
     const newRoles = mapAdminRoles(adminUser.roles);
+    log.info(newRoles);
     await Promise.map(newRoles, newRole => RoleApi.addRole(user.vevo_user_id, newRole), { concurrency: 3 });
     const updatedRoles = await RoleApi.getRoles(user.vevo_user_id);
-
     log.info(updatedRoles);
   } catch (err) {
     log.error(err);

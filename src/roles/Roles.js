@@ -98,7 +98,12 @@ const roles = [
   'youtube-write',
 
   // USER ADMIN ROLE
-  'users-admin'
+  'users-admin',
+
+  // SHORTLINKS ROLES
+  'shortlinks-admin',
+  'shortlinks-read',
+  'shortlinks-write'
 ];
 
 const constantsFromArray = (roles, prefix = 'cms-') =>

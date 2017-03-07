@@ -14,6 +14,7 @@ const getUsers = async () => {
         return [
           ...accumulator,
           {
+            username: current.username,
             vevousername: current.vevousername,
             roles: [
               current.name
@@ -46,14 +47,19 @@ const processUser = async adminUser => {
     const user = await RippleApi.getUserByEmail(adminUser.vevousername);
     log.info(user.vevo_user_id);
 
+    if (!user.vevo_user_id)
+      log.info(`Missed User: ${adminUser.username}`);
+
     const oldRoles = await RoleApi.getRoles(user.vevo_user_id);
     log.info(oldRoles);
 
-    const newRoles = mapAdminRoles(adminUser.roles);
-    log.info(newRoles);
-    await Promise.map(newRoles, newRole => RoleApi.addRole(user.vevo_user_id, newRole), { concurrency: 3 });
-    const updatedRoles = await RoleApi.getRoles(user.vevo_user_id);
-    log.info(updatedRoles);
+    if (adminUser.roles) {
+      const newRoles = mapAdminRoles(adminUser.roles);
+      log.info(newRoles);
+      await Promise.map(newRoles, newRole => RoleApi.addRole(user.vevo_user_id, newRole), { concurrency: 3 });
+      const updatedRoles = await RoleApi.getRoles(user.vevo_user_id);
+      log.info(updatedRoles);
+    }
   } catch (err) {
     log.error(err);
     throw err;

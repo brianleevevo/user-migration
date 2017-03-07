@@ -1,9 +1,9 @@
 {
   "db": {
     "admin": {
-      "server": "cmsservices.data.vevostg.com",
-      "username": "staging-admin",
-      "password": "b6cSruj8L5gcXx6",
+      "server": "cmsservices.data.vevoprd.com",
+      "username": "production-admin",
+      "password": "WHObX890Kx17QTb",
       "database": "Admin"
     }
   },

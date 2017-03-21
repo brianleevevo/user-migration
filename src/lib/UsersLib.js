@@ -66,7 +66,42 @@ const processUser = async adminUser => {
   }
 };
 
+const addRoleByUsers = async (addRole, searchRole, offset = 0, limit = 1000) => {
+  try {
+    const results = await RoleApi.getUsersFromRole(searchRole, offset, limit);
+    log.info(results);
+
+    /*const batch = await RippleApi.getBatchUsers(results.items);
+    log.info(batch);*/
+
+    if (addRole) {
+      const { items: users } = results;
+      await Promise.map(users, user => RoleApi.addRole(user, addRole), { concurrency: 5 });
+    }
+  }
+  catch (err) {
+    log.error(err);
+    throw err;
+  }
+};
+
+const deleteRoleByUsers = async (deleteRole, searchRole, offset = 0, limit = 1000) => {
+  try {
+    const results = await RoleApi.getUsersFromRole(searchRole, offset, limit);
+    log.info(results);
+
+    if (deleteRole)
+      await Promise.map(results.users, user => RoleApi.deleteRole(user, deleteRole), { concurrency: 5 });
+  }
+  catch (err) {
+    log.error(err);
+    throw err;
+  }
+};
+
 export default {
   process,
-  processUser
+  processUser,
+  addRoleByUsers,
+  deleteRoleByUsers
 };

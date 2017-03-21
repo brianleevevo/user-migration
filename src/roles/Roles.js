@@ -5,6 +5,7 @@ const roles = [
   'template-label',
   'template-editor',
   'template-marketing',
+  'template-syndication',
 
   // FEED ROLES
   'feed-admin',

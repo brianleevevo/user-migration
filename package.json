@@ -27,6 +27,7 @@
   "dependencies": {
     "bluebird": "^3.4.7",
     "client-oauth2": "^3.4.1",
+    "dotenv": "^4.0.0",
     "mssql": "^3.3.0",
     "node-fetch": "^1.6.3",
     "winston": "^2.3.1"

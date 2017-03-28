@@ -1,19 +1,7 @@
 {
-  "db": {
-    "admin": {
-      "server": "cmsservices.data.vevostg.com",
-      "username": "staging-admin",
-      "password": "b6cSruj8L5gcXx6",
-      "database": "Admin"
-    }
-  },
   "auth": {
-    "clientId": "V-Yx1y3qf43B_D_cMqey",
-    "clientSecret": "9QAJf1KziLYuuf-Kqgkv12n_u3AjlajlbDU3Uns",
     "accessTokenUri": "https://conrad.vevostg.com/token",
-    "authorizationUri": "https://conrad.vevostg.com/auth",
-    "username": "brian.lee@vevo.com",
-    "password": "Password1"
+    "authorizationUri": "https://conrad.vevostg.com/auth"
   },
   "api": {
     "conrad": "https://conrad.vevostg.com",

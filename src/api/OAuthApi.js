@@ -1,5 +1,5 @@
 import ClientOAuth2 from 'client-oauth2';
-import log from 'winston';
+//import { log } from './utils/Log';
 import FetchApi from './FetchApi';
 import config from '../config';
 
@@ -9,15 +9,15 @@ const MAX_RETRIES = 3;
 
 const auth = () => {
   const vevoAuth = new ClientOAuth2({
-    clientId: config.auth.clientId,
-    clientSecret: config.auth.clientSecret,
+    clientId: process.env.CONRAD_CLIENT_ID,
+    clientSecret: process.env.CONRAD_CLIENT_SECRET,
     accessTokenUri: config.auth.accessTokenUri,
     authorizationUri: config.auth.authorizationUri,
     redirectUri: 'http://example.com/auth/vevo/callback',
     scopes: [ 'administrator', 'account-administration' ]
   });
 
-  return vevoAuth.owner.getToken(config.auth.username, config.auth.password)
+  return vevoAuth.owner.getToken(process.env.CONRAD_USERNAME, process.env.CONRAD_PASSWORD)
     .then(user => {
       setToken(user.data.access_token);
       return token;

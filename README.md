@@ -32,7 +32,18 @@ npm run start:add-role -- add-role=cms-new-role user-role=cms-current-role
 
 ## Environments
 
-The default environment is set to run again conrad staging. To run against production, use `NODE_ENV=production`.
+The default environment is set to run again conrad staging. To run against production, use the environment variable `NODE_ENV=production`.
+
+## Configuration
+
+The following environment variables must be set to run this application. You can manually set them from your console, or use a .env file:
+
+```
+CONRAD_CLIENT_ID=
+CONRAD_CLIENT_SECRET=
+CONRAD_USERNAME=
+CONRAD_PASSWORD=
+```
 
 ## Linting
 

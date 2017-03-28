@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import UsersLib from './lib/UsersLib';
 import { log } from './utils/Log';
 
@@ -34,5 +37,5 @@ process.argv.forEach(val => {
 if (opts.runMode === 'add-role' && opts.addRole && opts.userRole)
   UsersLib.addRoleByUsers(opts.addRole, opts.userRole, 0, 1000)
     .then(() => log(`Role ${opts.addRole} added successfully to users with role ${opts.userRole}`));
-
-log('Bad arguments');
+else
+  log('Bad arguments');

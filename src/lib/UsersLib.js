@@ -71,9 +71,6 @@ const addRoleByUsers = async (addRole, searchRole, offset = 0, limit = 1000) => 
     const results = await RoleApi.getUsersFromRole(searchRole, offset, limit);
     log.info(results);
 
-    /*const batch = await RippleApi.getBatchUsers(results.items);
-    log.info(batch);*/
-
     if (addRole) {
       const { items: users } = results;
       await Promise.map(users, user => RoleApi.addRole(user, addRole), { concurrency: 5 });

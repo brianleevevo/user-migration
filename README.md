@@ -24,10 +24,10 @@ npm run build
 To backfill user roles:
 
 ```
-npm run start:add-role -- add-role=cms-new-role user-role=cms-current-role
+npm run start:add-role -- new-role=cms-new-role user-role=cms-current-role
 ```
 
-- `add-role` is the new role you want to add to users
+- `new-role` is the new role you want to add to users
 - `user-role` is the current role for users you want to add the new role to
 
 ## Environments

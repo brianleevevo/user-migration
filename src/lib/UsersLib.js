@@ -73,7 +73,7 @@ const addRoleByUsers = async (addRole, searchRole, offset = 0, limit = 1000) => 
 
     if (addRole) {
       const { items: users } = results;
-      await Promise.map(users, user => RoleApi.addRole(user, addRole), { concurrency: 5 });
+      await Promise.map(users, user => RoleApi.addRole(user, addRole), { concurrency: 1 });
     }
   }
   catch (err) {
@@ -88,7 +88,7 @@ const deleteRoleByUsers = async (deleteRole, searchRole, offset = 0, limit = 100
     log.info(results);
 
     if (deleteRole)
-      await Promise.map(results.users, user => RoleApi.deleteRole(user, deleteRole), { concurrency: 5 });
+      await Promise.map(results.users, user => RoleApi.deleteRole(user, deleteRole), { concurrency: 1 });
   }
   catch (err) {
     log.error(err);
